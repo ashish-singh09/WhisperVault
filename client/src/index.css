@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #111827;
+  color: #FFFFFF;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #f3f4f6;
+}
+
+.btn {
+  color: #ffffff;
+  background-color: #3261ec;
+  border: none;
+  width: 100%;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #2151df;
+}
+
+#btnlogin:active {
+  vertical-align: top;
+  margin: 2px 1px 2px;
+  background-color: #0b3bc9;
+}
+
+input {
+  background-color: #272a2f !important;
+  color: #fff !important;
+  border: 1px solid #11acffc9 !important;
+}
+
+.loginHolder {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.loginForm {
+  align-items: center;
+  background-color: #1f2937d4;
+  border-radius: 20px;
+  box-shadow: 0 5px 21px 0 #5e78784a;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #1d3b39;
+  width: 420px;
+  min-width: 288px;
+  padding: 1.5rem .5rem;
+  justify-content: center;
+}
+
+.secretCard {
+  border: 1px solid #3bc9f38a;
+  border-radius: 14px;
+  padding: 1rem;
+  background: #142029;
+}
+
+.secretCard p {
+  margin-bottom: 0;
+  font-size: 0.75rem;
+  font-family: cursive;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+
+.secretCard h3 {
+  font-family: system-ui;
+  color: #e2e2e2
+}
+
+.scrollSecret {
+  overflow: scroll;
+}
+
+.scrollSecret {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.scrollSecret::-webkit-scrollbar {
+  display: none;
+}
+
+.secretHolder {
+  position: absolute;
+  right: 33px;
+  bottom: 68px;
+}
+
+.addSecret {
+  background: #3261ec;
+  width: 3rem;
+  justify-content: center;
+  display: flex;
+  border-radius: 9999px;
+  height: 3rem;
+  align-content: center;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 15px -3px #3b82f640;
+}
+
+.addSecretForm {
+  align-items: center;
+  background-color: #1f2937d4;
+  border-radius: 20px;
+  box-shadow: 0 2px 13px 0 #5e78784a;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #1d3b39;
+  height: 20rem;
+  justify-content: center;
+}
+
+.modal-content,
+.modal-title {
+  color: #e2e2e2 !important;
+  background-color: #111827;
+  font-family: system-ui;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.home {
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1a2231;
+  text-align: center;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 0 18px 0px #3a4860;
+}
+
+.home h1 {
+  font-size: 2.3rem;
+  line-height: 1.166;
+  letter-spacing: -.01em;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .home h1 {
+    font-size: 3rem;
+    line-height: 1;
+    letter-spacing: -.01em;
+  }
+}
+
+.tagline {
+  color: #9ca3af;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  letter-spacing: -.01em;
+}
+
+.home .btn {
+  width: 6.5rem;
+  font-size: 1.2rem;
+  margin: 0 5px;
+  font-weight: 500;
+}
