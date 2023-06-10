@@ -1,7 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const Home = () => {
+const Home = (Props) => {
+
+    const checkLogin = async () => {
+        try {
+
+            const res = await axios.get('/api/user/dashboard', {
+                headers: {
+                    'x-access-token': Cookies.get('token')
+                }
+            });
+
+            if (res.status === 200 && res.data.login === "ok") {
+                Props.toggleLoginStatus(true);
+            }
+
+        } catch (error) {
+        }
+    }
+
+    useEffect(() => {
+        checkLogin();
+    });
+
     return (<>
         <div className='container'>
             <div className='home'>
