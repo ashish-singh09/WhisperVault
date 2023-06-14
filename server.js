@@ -10,15 +10,10 @@ const Secret = require('./models/secret');
 const app = express();
 require('./DB/conn');
 
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200
-}
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 
 app.post("/api/user/login", async (req, res) => {
@@ -46,7 +41,7 @@ app.post("/api/user/login", async (req, res) => {
 
         res.cookie('token', token, {
             expires: new Date(Date.now() + 6000000),
-            httpOnly: false
+            httpOnly: true
         });
 
         return res.status(200).json({ msg: "Login sucessfull!" });

@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Navbar loggedIn={loggedIn} toggleLoginStatus={toggleLogin} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home toggleLoginStatus={toggleLogin}/>} />
         <Route path="/account/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard toggleLoginStatus={toggleLogin} />} />
         <Route path="/account/register" element={<Register />} />
