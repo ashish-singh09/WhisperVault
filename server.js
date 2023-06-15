@@ -40,7 +40,7 @@ app.post("/api/user/login", async (req, res) => {
         const token = jwt.sign(test, process.env.JWT_SECRET);
 
         res.cookie('token', token, {
-            expires: new Date(Date.now() + 6000000),
+            expires: new Date(Date.now() + (60000 * 60 * 24 * 10)),
             httpOnly: true
         });
 
