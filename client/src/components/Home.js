@@ -11,11 +11,7 @@ const Home = (Props) => {
     const checkLogin = async () => {
         try {
 
-            const res = await axios.get('/api/user/dashboard', {
-                headers: {
-                    'x-access-token': Cookies.get('token')
-                }
-            });
+            const res = await axios.get('/api/user/dashboard');
 
             if (res.status === 200 && res.data.login === "ok") {
                 Props.toggleLoginStatus(true);

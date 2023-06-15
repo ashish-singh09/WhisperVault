@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 const User = require('./models/user');
 const Secret = require('./models/secret');
@@ -12,9 +13,24 @@ require('./DB/conn');
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 3000;
 
+app.use((req, res, next) => {
+    try {
+
+        const token = req.cookies.token; // Assuming the token is stored in a cookie named "token"
+
+        if (token) {
+            req.headers.authorization = token; // Set the token in the "Authorization" header
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+    next();
+});
 
 app.post("/api/user/login", async (req, res) => {
 
@@ -41,10 +57,28 @@ app.post("/api/user/login", async (req, res) => {
 
         res.cookie('token', token, {
             expires: new Date(Date.now() + (60000 * 60 * 24 * 10)),
-            httpOnly: true
+            httpOnly: true,
+            secure: true
         });
 
         return res.status(200).json({ msg: "Login sucessfull!" });
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({ msg: "Login failed!" });
+    }
+})
+
+app.get("/api/user/logout", async (req, res) => {
+
+    try {
+
+        const cookieValue = req.cookies.token; // Assuming the cookie name is "token"
+
+        if (cookieValue) {
+            // Deleting a cookie
+            res.clearCookie('token'); // Clearing the cookie named "token"
+            return res.status(200).json({ msg: "Logout sucessfull!" });
+        }
     } catch (error) {
         console.log(error);
         return res.status(400).json({ msg: "Login failed!" });
@@ -65,8 +99,8 @@ app.post("/api/user/register", async (req, res) => {
 
     try {
 
-        let user = await User.findOne({username});
-        if(user) return res.status(400).json({ msg: "User already Exists!" });
+        let user = await User.findOne({ username });
+        if (user) return res.status(400).json({ msg: "User already Exists!" });
 
         user = await User.create({ name, username, password });
 
@@ -80,7 +114,7 @@ app.post("/api/user/register", async (req, res) => {
 
 app.get("/api/user/dashboard", (req, res) => {
 
-    const token = req.headers['x-access-token'];
+    const token = req.headers.authorization;
 
     if (!token) {
         return res.status(400).json({ login: "bad" });
@@ -96,7 +130,7 @@ app.get("/api/user/dashboard", (req, res) => {
 
 app.post("/api/user/add/secret", async (req, res) => {
 
-    const token = req.headers['x-access-token'];
+    const token = req.headers.authorization;
     const { secretText, name } = req.body;
 
     if (!token) {
@@ -120,7 +154,7 @@ app.post("/api/user/add/secret", async (req, res) => {
 
 app.get("/api/user/get/secret", async (req, res) => {
 
-    const token = req.headers['x-access-token'];
+    const token = req.headers.authorization;
 
     if (!token) {
         return res.status(400).json({ msg: "bad_login" });
@@ -144,9 +178,9 @@ app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html")),
-    function (err){
-        res.status(500).send(err);
-    }
+        function (err) {
+            res.status(500).send(err);
+        }
 });
 
 

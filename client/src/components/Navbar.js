@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const Navbar = (Props) => {
 
-    const logout = () => {
-        Cookies.remove('token');
-        Props.toggleLoginStatus(false);
+    const logout = async () => {
+        try {
+            const res = await axios.get('/api/user/logout');
+
+            if (res.status === 200) {
+                Props.toggleLoginStatus(false);
+            }
+
+        } catch (error) { 
+        }
     }
 
     return (<>

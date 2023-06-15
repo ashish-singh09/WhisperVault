@@ -32,11 +32,7 @@ const Dashboard = (Props) => {
     const checkLogin = async () => {
         try {
 
-            const res = await axios.get('/api/user/dashboard', {
-                headers: {
-                    'x-access-token': Cookies.get('token')
-                }
-            });
+            const res = await axios.get('/api/user/dashboard');
 
             if (res.status === 200 && res.data.login === "ok") {
                 setLoading(false);
@@ -59,11 +55,7 @@ const Dashboard = (Props) => {
 
         try {
 
-            const res = await axios.post('/api/user/add/secret', secret, {
-                headers: {
-                    'x-access-token': Cookies.get('token')
-                }
-            });
+            const res = await axios.post('/api/user/add/secret', secret);
 
             if (res.status === 200 && res.data.msg === "ok") {
                 setSecret({
@@ -87,11 +79,7 @@ const Dashboard = (Props) => {
     const getSecret = async () => {
         try {
 
-            const res = await axios.get('/api/user/get/secret', {
-                headers: {
-                    'x-access-token': Cookies.get('token')
-                }
-            });
+            const res = await axios.get('/api/user/get/secret');
 
             if (res.status === 200) {
                 setSecretList(res.data);
