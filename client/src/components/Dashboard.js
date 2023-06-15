@@ -35,7 +35,6 @@ const Dashboard = (Props) => {
             const res = await axios.get('/api/user/dashboard');
 
             if (res.status === 200 && res.data.login === "ok") {
-                setLoading(false);
                 setLoggedIn(true);
                 Props.toggleLoginStatus(true);
             }
@@ -82,6 +81,7 @@ const Dashboard = (Props) => {
             const res = await axios.get('/api/user/get/secret');
 
             if (res.status === 200) {
+                setLoading(false);
                 setSecretList(res.data);
             }
         } catch (error) {
