@@ -123,8 +123,8 @@ const Dashboard = (Props) => {
 
                 {/* Button trigger modal */}
                 <div className='secretHolder'>
-                    <h1>
-                        <button className='btn addSecret' type='button' data-bs-toggle="modal" data-bs-target="#submitSecret">
+                    <h1 style={{ position: 'relative', zIndex: 1 }}>
+                        <button className='btn addSecret my-shadow' type='button' data-bs-toggle="modal" data-bs-target="#submitSecret">
                             <i className="fa-solid fa-plus"></i>
                         </button>
                     </h1>
