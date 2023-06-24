@@ -82,7 +82,7 @@ input {
 
 .secretCard h3 {
   font-family: system-ui;
-  overflow: scroll;
+  word-wrap: break-word;
   color: #e2e2e2
 }
 
