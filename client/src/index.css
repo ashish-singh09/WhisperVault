@@ -82,6 +82,7 @@ input {
 
 .secretCard h3 {
   font-family: system-ui;
+  overflow: scroll;
   color: #e2e2e2
 }
 
