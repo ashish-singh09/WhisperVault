@@ -4,7 +4,7 @@ Anonymously Share and Connect Through Secrets.**.
 
 <br>
 
-## 📌 **Live Site URL:** <a href="https://tastybiteschiragsolanki.netlify.app">**Visit Now** 🚀</a>
+## 📌 **Live Site URL:** <a href="https://mywhispervault.cyclic.app">**Visit Now** 🚀</a>
 
 WhisperVault is a unique platform that allows users to anonymously share their secrets, connecting individuals from all walks of life in a safe and supportive community. The project aims to provide a space where people can freely express themselves, unburden their thoughts, and find solace in shared experiences.
 
